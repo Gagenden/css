@@ -1,91 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>float布局</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>float布局</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+      ul,
+      li,
+      ol {
+        list-style: none;
+      }
 
-    ul,
-    li,
-    ol {
-      list-style: none;
-    }
+      img {
+        max-width: 100%;
+      }
 
-    img {
-      max-width: 100%;
-    }
+      .clearfix::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
 
-    .clearfix::after {
-      content: '';
-      display: block;
-      clear: both;
-    }
+      ul > li {
+        /* border: 1px solid pink; */
+        float: left;
+        padding: 10px 0.5em;
+        line-height: 50px;
+      }
 
-    ul>li {
-      /* border: 1px solid pink; */
-      float: left;
-      padding: 10px 0.5em;
-      line-height: 50px;
-    }
+      ul {
+        /* border: 1px solid blue; */
+        display: inline-block;
+      }
 
-    ul {
-      /* border: 1px solid blue; */
-      display: inline-block;
-    }
+      .logo > img {
+        /* border: 1px solid purple; */
+        height: 40px;
+        vertical-align: top;
+        /*让图片完全布满，下面不会有缝隙*/
+      }
 
+      .logo {
+        background-color: #ccc;
+        display: inline-block;
+        margin-top: 18px;
+      }
 
-    .logo>img {
-      /* border: 1px solid purple; */
-      height: 40px;
-      vertical-align: top;
-      /*让图片完全布满，下面不会有缝隙*/
-    }
+      .logo1 {
+        float: left;
+      }
 
-    .logo {
-      background-color: #ccc;
-      display: inline-block;
-      margin-top: 18px;
+      .nav {
+        float: right;
+      }
 
-    }
+      header {
+        /* border: 1px solid pink; */
+        background-color: #ccc;
+        color: white;
+        font-size: 1.2em;
+      }
 
-    .logo1 {
-      float: left;
-    }
+      .content {
+        /* 注意：如果这里使用border，那么实际宽度只有798<100+500+200 */
+        outline: 1px solid #ccc;
+        width: 800px;
+        margin-top: 10px;
+        /* 水平居中 */
+        margin-left: auto;
+        margin-right: auto;
+      }
 
-    .nav {
-      float: right;
-    }
+      .content > aside {
+        /* border: 1px solid green; */
+        width: 100px;
+        height: 300px;
+        background-color: #888;
+        float: left;
+      }
 
-    header {
-      /* border: 1px solid pink; */
-      background-color: #ccc;
-      color: white;
-      font-size: 1.2em;
-    }
-  </style>
-</head>
+      .content > main {
+        /* border: 1px solid blue; */
+        width: 500px;
+        height: 300px;
+        background-color: #666;
+        float: left;
+      }
 
-<body>
-  <header class="clearfix">
-    <div class="logo logo1">
-      <img src="./images/logo.png" alt="log">
+      .content > .ad {
+        width: 200px;
+        height: 300px;
+        background-color: #ccc;
+        float: left;
+      }
+
+      .images {
+        outline: 1px solid #ccc;
+        width: 800px;
+        /* height: 200px; */
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .images > .x {
+        /* outline: 1px solid purple; */
+        margin-right: -12px;
+      }
+      .images > .x > .image {
+        /* border: 1px solid blue; */
+        float: left;
+        width: 191px;
+        margin-bottom: 10px;
+        margin-right: 12px;
+      }
+
+      .image > img {
+        width: 191px;
+      }
+
+      footer {
+        height: 100px;
+        line-height: 100px;
+        background-color: #999;
+        text-align: center;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 两栏布局 -->
+    <header class="clearfix">
+      <div class="logo logo1">
+        <img src="./images/logo.png" alt="log" />
+      </div>
+      <ul class="clearfix nav">
+        <li>首页</li>
+        <li>课程</li>
+        <li>优惠</li>
+        <li>更多</li>
+      </ul>
+    </header>
+    <!-- 三栏布局 -->
+    <div class="content clearfix">
+      <aside></aside>
+      <main></main>
+      <div class="ad"></div>
     </div>
-    <ul class="clearfix nav">
-      <li>首页</li>
-      <li>课程</li>
-      <li>优惠</li>
-      <li>更多</li>
-    </ul>
-  </header>
+    <!-- 平均布局 -->
+    <div class="images">
+      <div class="x clearfix">
+        <div class="image"><img src="images/1.jpg" alt="易烊千玺" /></div>
+        <div class="image"><img src="images/1.jpg" alt="易烊千玺" /></div>
+        <div class="image"><img src="images/1.jpg" alt="易烊千玺" /></div>
+        <div class="image"><img src="images/1.jpg" alt="易烊千玺" /></div>
+        <div class="image"><img src="images/2.jpg" alt="易烊千玺" /></div>
+        <div class="image"><img src="images/2.jpg" alt="易烊千玺" /></div>
+        <div class="image"><img src="images/2.jpg" alt="易烊千玺" /></div>
+        <div class="image"><img src="images/2.jpg" alt="易烊千玺" /></div>
+      </div>
+    </div>
 
-</body>
-
+    <footer>学习float布局啦，注意使用负margin</footer>
+  </body>
 </html>
