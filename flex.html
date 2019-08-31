@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>float布局</title>
+  <title>flex布局</title>
   <style>
     * {
       margin: 0;
@@ -14,7 +14,6 @@
     }
 
     ul,
-    li,
     ol {
       list-style: none;
     }
@@ -23,130 +22,119 @@
       max-width: 100%;
     }
 
-    .clearfix::after {
-      content: "";
-      display: block;
-      clear: both;
-    }
-
-    ul>li {
-      /* border: 1px solid pink; */
-      float: left;
-      padding: 10px 0.5em;
-      line-height: 50px;
-    }
-
-    ul {
-      /* border: 1px solid blue; */
-      display: inline-block;
-    }
-
-    .logo>img {
-      /* border: 1px solid purple; */
-      height: 40px;
-      vertical-align: top;
-      /*让图片完全布满，下面不会有缝隙*/
-    }
-
     .logo {
-      background-color: #ccc;
-      display: inline-block;
-      margin-top: 18px;
-    }
-
-    .logo1 {
-      float: left;
-    }
-
-    .nav {
-      float: right;
+      /* border: 1px solid red; */
+      /* height: 40px; */
+      padding-left: 10px;
     }
 
     header {
       /* border: 1px solid pink; */
       background-color: #ccc;
+      display: flex;
+      /* justify-content: space-between;    */
+      align-items: center;
+    }
+
+    .logo>img {
+      /* border: 1px solid blue; */
+      height: 40px;
+      vertical-align: middle;
+    }
+
+    ul {
+      /*注意：下面的这句margin-left: auto;等价于父元素header里面的 justify-content: space-between;*/
+      margin-left: auto;
+      display: flex;
+    }
+
+    ul>li {
+      /* border: 1px solid blue; */
       color: white;
       font-size: 1.2em;
+      padding: 0 12px;
     }
 
     .content {
-      /* 注意：如果这里使用border，那么实际宽度只有798<100+500+200 */
-      outline: 1px solid #ccc;
+      /* outline: 1px solid blue; */
+      display: flex;
       width: 800px;
       margin-top: 10px;
-      /* 水平居中 */
       margin-left: auto;
       margin-right: auto;
     }
 
     .content>aside {
-      /* border: 1px solid green; */
-      width: 100px;
+      /* border: 1px solid red; */
+      width: 200px;
       height: 300px;
-      background-color: #888;
-      float: left;
+      background-color: #555;
     }
 
     .content>main {
-      /* border: 1px solid blue; */
-      width: 500px;
+      /* border: 1px solid red; */
+      flex-grow: 1;
       height: 300px;
-      background-color: #666;
-      float: left;
+      background-color: #999;
     }
 
     .content>.ad {
+      /* border: 1px solid black; */
       width: 200px;
       height: 300px;
-      background-color: #ccc;
-      float: left;
+      background-color: #666;
     }
 
     .images {
-      outline: 1px solid #ccc;
+      /* border: 1px solid blue; */
       width: 800px;
-      /* height: 200px; */
       margin-top: 10px;
       margin-left: auto;
       margin-right: auto;
+
     }
 
-    .images>.x {
-      /* outline: 1px solid purple; */
-      margin-right: -12px;
-    }
-
-    .images>.x>.image {
-      /* border: 1px solid blue; */
-      float: left;
-      width: 191px;
-      margin-bottom: 10px;
+    .x>.image {
+      /* border: 1px solid black; */
+      /* width: 191px; */
       margin-right: 12px;
+      margin-bottom: 12px;
     }
 
     .image>img {
       width: 191px;
-      /* 防止图片下面有小缝隙 */
       vertical-align: middle;
     }
 
+    .x {
+      /* border: 1px solid black; */
+      display: flex;
+      flex-wrap: wrap;
+      margin-right: -12px;
+    }
+
     footer {
-      height: 100px;
-      line-height: 100px;
-      background-color: #999;
+      border: 1px solid #ccc;
+      width: 800px;
+      height: 150px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #ccc;
+      line-height: 150px;
       text-align: center;
       color: white;
+      font-size: 1.2em;
     }
   </style>
 </head>
 
 <body>
   <!-- 两栏布局 -->
-  <header class="clearfix">
-    <div class="logo logo1">
+  <header>
+    <div class="logo">
       <img src="./images/logo.png" alt="log" />
     </div>
-    <ul class="clearfix nav">
+    <ul class="nav">
       <li>首页</li>
       <li>课程</li>
       <li>优惠</li>
@@ -154,14 +142,14 @@
     </ul>
   </header>
   <!-- 三栏布局 -->
-  <div class="content clearfix">
+  <div class="content">
     <aside></aside>
     <main></main>
     <div class="ad"></div>
   </div>
   <!-- 平均布局 -->
   <div class="images">
-    <div class="x clearfix">
+    <div class="x">
       <div class="image"><img src="images/1.jpg" alt="易烊千玺" /></div>
       <div class="image"><img src="images/1.jpg" alt="易烊千玺" /></div>
       <div class="image"><img src="images/1.jpg" alt="易烊千玺" /></div>
@@ -173,7 +161,7 @@
     </div>
   </div>
 
-  <footer>学习float布局啦，注意使用负margin</footer>
+  <footer>学习flex布局啦，注意使用负margin</footer>
 </body>
 
 </html>
